@@ -12,7 +12,7 @@ const getThemeStyle = (variant:"primary"|"secondary"|"white")=>{
     }
 
     if (variant === "white") {
-        return "bg-white text-primary border-primary hover:border-primary after:bg-gray-300"  // White button style
+        return "bg-white text-black border-black hover:border-primary after:bg-gray-300 active:bg-black-300"
     }
     
     return "text-primary"

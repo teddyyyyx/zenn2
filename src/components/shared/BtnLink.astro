@@ -3,15 +3,20 @@ export interface Props{
     href:string,
     text:string,
     className?:string,
-    variant:"primary"|"secondary"
+    variant:"primary"|"secondary"|"white"
 }
 
 const {href, text,className, variant} = Astro.props
 
-const getThemeStyle = (variant:"primary"|"secondary")=>{
+const getThemeStyle = (variant:"primary"|"secondary"|"white")=>{
     if (variant === "primary") {
         return "bg-primary border-transparent relative after:bg-[#172554] hover:border-[#172554]"
     }
+
+    if (variant === "white") {
+        return "bg-white text-black border-black hover:border-primary after:bg-gray-300 active:bg-black-300"
+    }
+
     return "text-primary"
 }
 
