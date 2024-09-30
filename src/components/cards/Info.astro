@@ -11,7 +11,7 @@ const { title, description } = Astro.props
     <div class=" rounded-xl bg-gray-300 dark:bg-gray-950 p-3 text-heading-1 w-max relative">
         <slot name="icon"/>
     </div>
-    <h2 class="md:text-xl font-semibold text-heading-2 mt-3 mb-2"> {title} </h2>
+    <h2 class="md:text-xl font-semibold text-heading-2 mt-3 mb-2 whitespace-nowrap"> {title} </h2>
     <Paragraph > 
         {description}
     </Paragraph>
