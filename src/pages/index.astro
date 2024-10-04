@@ -6,18 +6,18 @@ import Process from '../components/sections/Process.astro';
 import Features from '../components/sections/Features.astro';
 import CTA from '../components/sections/CTA.astro';
 import Brands from '../components/sections/Brands.astro';
-import Pricing from '../components/sections/Pricing.astro';
+import PricingComponent from '../components/sections/PricingComponent.astro';
 import FAQ from '../components/sections/FAQ.astro';
 ---
 
 <Layout title="Welcome to AgenceX">
-	<main class="flex flex-col gap-y-36 md:gap-y-64 overflow-hidden">
+	<main class="flex flex-col gap-y-28 md:gap-y-56 overflow-hidden">
 		<Hero/>
 		<!-- <Brands/> -->
 		<Services/>
 		<Process/>
 		<Features/>
-		<Pricing/>
+		<PricingComponent/>
 		<FAQ />
 		<CTA/>
 	</main>
