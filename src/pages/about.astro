@@ -1,0 +1,38 @@
+---
+import Container from "../components/shared/Container.astro";
+import Paragraph from "../components/shared/Paragraph.astro";
+import AboutContent1 from "../components/sections/AboutContent1.astro";
+import AboutContent2 from "../components/sections/AboutContent2.astro";
+import Layout from "../layouts/Layout.astro";
+import Title from "../components/shared/Title.astro";
+---
+
+<Layout title="About - Zenn Web Designs">
+    <Container className="flex flex-col gap-32 sm:gap-10">
+        <section class="pt-20  md:pt-32 xl:pt-40 flex flex-col gap-32">
+            <div class="lg:py-16  mx-auto max-w-screen-lg">
+                <div class="text-center">
+                    <Title>Zenn Web Designs</Title>
+                    <Paragraph>
+                        At Zenn Web Designs, our mission is simple: to help businesses stand out from the crowd with a unique and professional websites.
+                        <br><br>
+                        We understand that in today’s competitive market, your online presence needs to be more than just a digital placeholder—it needs to reflect the quality and character of your brand.
+                    </Paragraph>
+                </div>
+            </div>        
+        </section>
+
+
+       <!-- <AboutContent1/> -->
+       <AboutContent2/>
+
+       <div class="p-10 rounded-3xl lg:py-16  mx-auto max-w-screen-lg bg-gray-100 dark:bg-gray-900">
+        
+        <Paragraph className="text-center">
+            Zenn Web Designs, proudly based in Sorsogon City, Bicol, Philippines, specializes in web design and development, helping local companies elevate their professionalism through custom, responsive websites.
+                <br><br>
+            We are dedicated to enhancing your brand's online presence and credibility with tailored solutions that reflect your unique identity.
+        </Paragraph>
+       </div>
+    </Container>
+</Layout>
