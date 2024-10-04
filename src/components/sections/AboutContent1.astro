@@ -2,53 +2,87 @@
 import Image from "astro/components/Image.astro";
 import Paragraph from "../shared/Paragraph.astro";
 import Title from "../shared/Title.astro";
+import benz_img from '../../images/benz.png'
 ---
 
-<section class="text-gray-600 body-font">
-    <div class="container px-5 py-24 mx-auto">
+<section class="text-gray-600 body-font pt-24">
+    <div class="container px-5  mx-auto">
       <div class="flex flex-col text-center w-full mb-20">
-        <h2 class="text-xs text-indigo-500 tracking-widest font-medium title-font mb-1">ROOF PARTY POLAROID</h2>
-        <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Master Cleanse Reliac Heirloom</h1>
-        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+        <Title className="text-primary text-5xl">Zenn Web Designs</Title>
+        <!-- <Paragraph className="sm:text-3xl font-medium title-font mb-4 text-gray-900">Web Design and Development</Paragraph> -->
+        <Paragraph className="lg:w-2/3 mx-auto leading-relaxed text-base">
+          At Zenn, our mission is simple: to help businesses stand out from the crowd with a unique and professional websites.
+        </Paragraph>
+        <br>
+        <Paragraph className="lg:w-2/3 text-center mx-auto leading-relaxed text-base">
+        We understand that in today’s competitive market, your online presence needs to be more than just a digital placeholder—it needs to reflect the quality and character of your brand.
+        </Paragraph>
+
       </div>
       <div class="flex flex-wrap">
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Shooting Stars</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
+        <div class="text-center xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 md:border-0 border-opacity-60">
+          <Paragraph className="text-lg sm:text-xl  font-medium title-font mb-2 text-primary">Elegant Designs</Paragraph>
+          <Paragraph className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</Paragraph>
+          <!-- <a class="text-indigo-500 inline-flex items-center">Learn More
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </a> -->
         </div>
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">The Catalyzer</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
+        <div class="text-center xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+          <Paragraph className="text-lg sm:text-xl font-medium title-font mb-2 text-primary">Ultra Fast Load Time</Paragraph>
+          <Paragraph className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</Paragraph>
+          <!-- <a class="text-indigo-500 inline-flex items-center">Learn More
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </a> -->
         </div>
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Neptune</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
+        <div class="text-center xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+          <Paragraph className="text-lg sm:text-xl font-medium title-font mb-2 text-primary">Professional Essence</Paragraph>
+          <Paragraph className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</Paragraph>
+          <!-- <a class="text-indigo-500 inline-flex items-center">Learn More
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </a> -->
         </div>
-        <div class="xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
-          <h2 class="text-lg sm:text-xl text-gray-900 font-medium title-font mb-2">Melanchole</h2>
-          <p class="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
-          <a class="text-indigo-500 inline-flex items-center">Learn More
+        <div class="text-center xl:w-1/4 lg:w-1/2 md:w-full px-8 py-6 border-l-2 border-gray-200 border-opacity-60">
+          <Paragraph className="text-lg sm:text-xl font-medium title-font mb-2 text-primary">Fully Responsive</Paragraph>
+          <Paragraph className="leading-relaxed text-base mb-4">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</Paragraph>
+          <!-- <a class="text-indigo-500 inline-flex items-center">Learn More
             <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
               <path d="M5 12h14M12 5l7 7-7 7"></path>
             </svg>
-          </a>
+          </a> -->
         </div>
       </div>
-      <button class="flex mx-auto mt-16 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
+  
+
+      <section class="mt-20">
+        <div class="max-w-screen-xl px-4 py-8 mx-auto text-center  lg:px-6">
+            <figure class="max-w-screen-md mx-auto">
+                <svg class="h-12 mx-auto mb-3 text-primary" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.017 18L14.017 10.609C14.017 4.905 17.748 1.039 23 0L23.995 2.151C21.563 3.068 20 5.789 20 8H24V18H14.017ZM0 18V10.609C0 4.905 3.748 1.038 9 0L9.996 2.151C7.563 3.068 6 5.789 6 8H9.983L9.983 18L0 18Z" fill="currentColor"/>
+                </svg> 
+                <blockquote>
+                    <Paragraph>
+
+                      Hey there! I'm <span class="text-primary">Benz Samson Tagle</span>, the lead developer and designer at <span class="text-primary">Zenn Web Designs</span>. With a Computer Science degree from Bicol University, I specialize in creating unique websites that are both visually stunning and <span class="text-primary"> high-performing</span>
+                      <br><br>
+                      Zenn was founded to help local businesses elevate their brands with <span class="text-primary">unique websites</span> that capture their essence and stand out online. Every project is designed to be fast, user-friendly, and tailored to <span class="text-primary">meet your business goals</span>, whether you need an engaging portfolio, an e-commerce platform, or a way to connect with your audience.                    
+                   
+                    </Paragraph>
+                </blockquote>
+                <figcaption class="flex items-center justify-center mt-6 space-x-3">
+                    <Image src={benz_img} width={100} height={100} alt="profile picture" class="rounded-full w-24 h-24  "/>
+                    <div class="flex items-center divide-x-2 divide-gray-500 dark:divide-gray-700">
+                        <div class="pr-3 font-medium text-gray-900 dark:text-white">Benz S.T.</div>
+                        <div class="pl-3 text-sm font-medium text-primary">Lead Developer & Designer</div>
+                    </div>
+                </figcaption>
+            </figure>
+        </div>
+      </section>
     </div>
   </section>
