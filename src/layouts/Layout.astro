@@ -9,25 +9,6 @@ export interface Props {
 
 const { title } = Astro.props;
 
-    // const slideAnim = {
-    //   old: {
-    //     name: 'slideDown',
-    //     duration: '0.3s',
-    //     easing: 'ease-out',
-    //     fillMode: 'backwards',
-    //   },
-    //   new: {
-    //     name: 'slideUp',
-    //     duration: '0.3s',
-    //     delay: `${index * 0.1 + 0.1}s`,
-    //     easing: 'ease-out',
-    //     fillMode: 'backwards',
-    //   },
-    // }
-    // const verticalSlide = {
-    //   forwards: animSlideUp,
-    //   backwards: animSlideUp,
-    // }
 ---
 
 <!DOCTYPE html>
@@ -60,103 +41,9 @@ const { title } = Astro.props;
   </div>
   </body>
 
-  <script>
-    function applyTheme() {
-      const switchTheme = document.querySelector("[data-switch-theme]");
-      if (
-        localStorage.getItem("appTheme") === "dark" ||
-        (!("appTheme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-  
-      if (switchTheme) {
-        switchTheme.addEventListener("click", (e) => {
-          e.preventDefault();
-          const doc = document.documentElement;
-          if (doc) {
-            if (localStorage.getItem("appTheme")) {
-              if (localStorage.getItem("appTheme") === "light") {
-                doc.classList.add("dark");
-                localStorage.setItem("appTheme", "dark");
-              } else {
-                doc.classList.remove("dark");
-                localStorage.setItem("appTheme", "light");
-              }
-            } else {
-              if (doc.classList.contains("dark")) {
-                doc.classList.remove("dark");
-                localStorage.setItem("appTheme", "light");
-              } else {
-                doc.classList.add("dark");
-                localStorage.setItem("appTheme", "dark");
-              }
-            }
-          }
-        });
-      }
-    }
-  
-    function applyMenuToggle() {
-  const toggleMenu = document.querySelector("[data-toggle-nav]");
-  const navbar = document.querySelector("[data-navbar]") as HTMLElement; // Cast to HTMLElement
-  const overlayNav = document.querySelector("[data-nav-overlay]");
-
-  if (toggleMenu && navbar && overlayNav) {
-    toggleMenu.addEventListener("click", (e) => {
-      e.preventDefault();
-      if (toggleMenu.getAttribute("data-open-nav") === "false") {
-        toggleMenu.setAttribute("data-open-nav", "true");
-        overlayNav.setAttribute("data-is-visible", "true");
-        document.body.classList.add("!overflow-y-hidden");
-        navbar.style.height = `${navbar.scrollHeight}px`; // navbar is HTMLElement now
-      } else {
-        toggleMenu.setAttribute("data-open-nav", "false");
-        overlayNav.setAttribute("data-is-visible", "false");
-        document.body.classList.remove("!overflow-y-hidden");
-        navbar.style.height = "0px"; // navbar is HTMLElement now
-      }
-    });
-
-    navbar.addEventListener("click", () => {
-      toggleMenu.setAttribute("data-open-nav", "false");
-      overlayNav.setAttribute("data-is-visible", "false");
-      document.body.classList.remove("!overflow-y-hidden");
-      navbar.style.height = "0px"; // navbar is HTMLElement now
-    });
-
-    overlayNav.addEventListener("click", () => {
-      toggleMenu.setAttribute("data-open-nav", "false");
-      overlayNav.setAttribute("data-is-visible", "false");
-      document.body.classList.remove("!overflow-y-hidden");
-      navbar.style.height = "0px"; // navbar is HTMLElement now
-    });
-  }
-}
-
-    
-  
-    // Apply theme and menu toggle on initial load
-    applyTheme();
-    applyMenuToggle();
-  
-    // Reapply theme and menu toggle after every page swap
-    document.addEventListener('astro:after-swap', () => {
-      applyTheme();
-      applyMenuToggle();
-    });
-  </script>
-
-
-
-  <!-- <script>
-    const switchTheme = document.querySelector(
-      "[data-switch-theme]"
-    ) as HTMLButtonElement;
-
+<script>
+  function applyTheme() {
+    const switchTheme = document.querySelector("[data-switch-theme]");
     if (
       localStorage.getItem("appTheme") === "dark" ||
       (!("appTheme" in localStorage) &&
@@ -166,6 +53,7 @@ const { title } = Astro.props;
     } else {
       document.documentElement.classList.remove("dark");
     }
+
     if (switchTheme) {
       switchTheme.addEventListener("click", (e) => {
         e.preventDefault();
@@ -176,7 +64,7 @@ const { title } = Astro.props;
               doc.classList.add("dark");
               localStorage.setItem("appTheme", "dark");
             } else {
-              document.documentElement.classList.remove("dark");
+              doc.classList.remove("dark");
               localStorage.setItem("appTheme", "light");
             }
           } else {
@@ -191,51 +79,123 @@ const { title } = Astro.props;
         }
       });
     }
-  </script>
+  }
 
-  
-  <script>
-    const toggleMenu = document.querySelector(
-      "[data-toggle-nav]"
-    ) as HTMLButtonElement;
-    const navbar = document.querySelector("[data-navbar]") as HTMLDivElement;
-    const overlayNav = document.querySelector(
-      "[data-nav-overlay]"
-    ) as HTMLDivElement;
-    if (toggleMenu) {
-      toggleMenu.addEventListener("click", e => {
-        e.preventDefault();
-        if (toggleMenu.getAttribute("data-open-nav") === "false") {
-          toggleMenu.setAttribute("data-open-nav", "true");
-          overlayNav.setAttribute("data-is-visible", "true");
-          document.body.classList.add("!overflow-y-hidden");
-		  navbar.style.height = `${navbar.scrollHeight}px`
 
-        }else{
-			toggleMenu.setAttribute("data-open-nav", "false");
-        	overlayNav.setAttribute("data-is-visible", "false");
-        	document.body.classList.remove("!overflow-y-hidden");
-		  	navbar.style.height = "0px"
-		}
-		
-        
-      });
+function applyMenuToggle() {
+  const toggleMenu = document.querySelector("[data-toggle-nav]");
+  const navbar = document.querySelector("[data-navbar]") as HTMLElement; // Cast to HTMLElement
+  const overlayNav = document.querySelector("[data-nav-overlay]");
+  const header = document.querySelector("nav"); // Select the header for hiding/showing
+  let lastScrollPosition = 0;
+  const scrollThreshold = 10; // Minimum scroll distance to trigger hiding/showing
+  const longScrollThreshold = 50; // Minimum distance for "long" scroll to hide
 
-      navbar.addEventListener("click", () => {
-        toggleMenu.setAttribute("data-open-nav", "false");
-        overlayNav.setAttribute("data-is-visible", "false");
-        document.body.classList.remove("!overflow-y-hidden");
-		  	navbar.style.height = "0px"
-      });
+  if (toggleMenu && navbar && overlayNav) {
+    toggleMenu.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isOpen = toggleMenu.getAttribute("data-open-nav") === "true";
 
-      overlayNav.addEventListener("click", () => {
-        toggleMenu.setAttribute("data-open-nav", "false");
-        	overlayNav.setAttribute("data-is-visible", "false");
-        	document.body.classList.remove("!overflow-y-hidden");
-		  	navbar.style.height = "0px"
-      });
+      if (!isOpen) {
+        toggleMenu.setAttribute("data-open-nav", "true");
+        overlayNav.setAttribute("data-is-visible", "true");
+        document.body.classList.add("!overflow-y-hidden");
+        navbar.style.height = `${navbar.scrollHeight}px`;
+      } else {
+        closeNav();
+      }
+    });
+
+    // Close navigation when clicking on the navbar or overlay
+    navbar.addEventListener("click", closeNav);
+    overlayNav.addEventListener("click", closeNav);
+
+    // Close navigation when clicking outside the menu and button
+    document.addEventListener("click", (e) => {
+      if (!navbar.contains(e.target as Node) && !toggleMenu.contains(e.target as Node)) {
+        closeNav();
+      }
+    });
+
+    // Swipe functionality
+    overlayNav.addEventListener("touchstart", handleTouchStart, false);
+    overlayNav.addEventListener("touchmove", handleTouchMove, false);
+
+    let xDown: number | null = null;
+    let yDown: number | null = null;
+
+    function handleTouchStart(evt: TouchEvent) {
+      const firstTouch = evt.touches[0];
+      xDown = firstTouch.clientX;
+      yDown = firstTouch.clientY;
     }
-  </script> -->
+
+    function handleTouchMove(evt: TouchEvent) {
+      if (!xDown || !yDown) return; // Exit if not set
+
+      const xUp = evt.touches[0].clientX;
+      const yUp = evt.touches[0].clientY;
+
+      const xDiff = xDown - xUp;
+      const yDiff = yDown - yUp;
+
+      // Determine if it's a horizontal swipe
+      if (Math.abs(xDiff) > Math.abs(yDiff) && Math.abs(xDiff) > 30) {
+        if (xDiff > 0) {
+          console.log("Swiped left!"); // Optional: handle left swipe if needed
+        } else {
+          console.log("Swiped right!"); // Optional: handle right swipe if needed
+          closeNav(); // Close the nav on right swipe
+        }
+
+        // Reset values after swipe action
+        xDown = null;
+        yDown = null;
+      }
+    }
+
+    function closeNav() {
+      toggleMenu.setAttribute("data-open-nav", "false");
+      overlayNav.setAttribute("data-is-visible", "false");
+      document.body.classList.remove("!overflow-y-hidden");
+      navbar.style.height = "0px";
+    }
+
+    // Hide navbar on scroll
+    window.addEventListener("scroll", () => {
+      let currentScrollPosition = window.scrollY;
+      let scrollDistance = Math.abs(currentScrollPosition - lastScrollPosition);
+
+      if (scrollDistance > scrollThreshold) {
+        if (scrollDistance > longScrollThreshold) {
+          if (currentScrollPosition > lastScrollPosition) {
+            // Scroll down by a long distance
+            header.classList.add("hide");
+          } else {
+            // Scroll up by a long distance
+            header.classList.remove("hide");
+          }
+        }
+      }
+
+      lastScrollPosition = currentScrollPosition;
+    });
+  }
+  }
+
+
+
+  // Apply theme and menu toggle on initial load
+  applyTheme();
+  applyMenuToggle();
+
+  // Reapply theme and menu toggle after every page swap
+  document.addEventListener('astro:after-swap', () => {
+    applyTheme();
+    applyMenuToggle();
+  });
+</script>
+
 </html>
 <style is:global>
   :root {
