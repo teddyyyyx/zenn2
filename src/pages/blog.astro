@@ -1,10 +1,12 @@
 ---
 import BlogOverview from '../components/sections/BlogOverview.astro'
+import CTA from '../components/sections/CTA.astro'
 import Container from '../components/shared/Container.astro'
 import Layout from '../layouts/Layout.astro'
 ---
 <Layout title='Blog - Zenn Web Designs'>
-    <main class="pt-20 md:pt-32 xl:pt-36 flex flex-col">
+    <main class="pt-20 md:pt-32 xl:pt-36 flex flex-col gap-20">
         <BlogOverview />
+        <CTA />
     </main>
 </Layout>

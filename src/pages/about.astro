@@ -5,19 +5,22 @@ import AboutContent1 from "../components/sections/AboutContent1.astro";
 import AboutContent2 from "../components/sections/AboutContent2.astro";
 import Layout from "../layouts/Layout.astro";
 import Title from "../components/shared/Title.astro";
+import CTA from "../components/sections/CTA.astro";
 ---
 
 <Layout title="About - Zenn Web Designs">
-    <main class="pt-28 md:pt-32 xl:pt-52 flex flex-col">
+    <main class="pt-28 md:pt-32 xl:pt-52 flex flex-col gap-20">
         <AboutContent1/>
 
     <!-- <AboutContent2/> -->
-        <div class="p-10 rounded-3xl lg:py-16  mx-auto max-w-screen-lg bg-gray-100 dark:bg-gray-900">
+        <!-- <div class="p-10 rounded-3xl lg:py-16  mx-auto max-w-screen-lg bg-gray-100 dark:bg-gray-900">
             <Paragraph className="text-center">
                 Zenn Web Designs, proudly based in <strong>Sorsogon City, Bicol, Philippines</strong>, specializes in web design and development, helping local companies elevate their professionalism through custom, responsive websites.
                     <br><br>
                 We are dedicated to enhancing your brand's online presence and credibility with tailored solutions that reflect your unique identity.
             </Paragraph>
-        </div>
+        </div> -->
+        
+        <CTA />
     </main>
 </Layout>

@@ -95,27 +95,39 @@ import Container from "../shared/Container.astro";
         </div>
         
         <script defer>
-            // Get all the FAQ buttons
-            const faqButtons = document.querySelectorAll('button[data-target]');
-            
-            faqButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                    // Get the target content element using the data-target attribute
-                    const target = document.getElementById(this.getAttribute('data-target'));
-                    
-                    // Toggle the max height to show/hide the FAQ content
-                    if (target.style.maxHeight) {
-                        target.style.maxHeight = null;
-                    } else {
-                        target.style.maxHeight = target.scrollHeight + "px";
-                    }
-                    
-                    // Optionally, toggle aria-expanded for accessibility
-                    const expanded = this.getAttribute('aria-expanded') === 'true';
-                    this.setAttribute('aria-expanded', !expanded);
+            // Function to attach event listeners
+            function attachFAQListeners() {
+                // Get all the FAQ buttons
+                const faqButtons = document.querySelectorAll('button[data-target]');
+                
+                faqButtons.forEach(button => {
+                    button.addEventListener('click', function () {
+                        // Get the target content element using the data-target attribute
+                        const target = document.getElementById(this.getAttribute('data-target'));
+                        
+                        // Toggle the max height to show/hide the FAQ content
+                        if (target.style.maxHeight) {
+                            target.style.maxHeight = null;
+                        } else {
+                            target.style.maxHeight = target.scrollHeight + "px";
+                        }
+                        
+                        // Optionally, toggle aria-expanded for accessibility
+                        const expanded = this.getAttribute('aria-expanded') === 'true';
+                        this.setAttribute('aria-expanded', !expanded);
+                    });
                 });
+            }
+        
+            // Call the function once initially to attach event listeners
+            attachFAQListeners();
+        
+            // Re-apply listeners after content swap in Astro
+            document.addEventListener('astro:after-swap', () => {
+                attachFAQListeners();
             });
         </script>
+        
         
     </Container>
 </section>
