@@ -1,5 +1,6 @@
 ---
 import Container from "../shared/Container.astro";
+import Paragraph from "../shared/Paragraph.astro";
 import Title from "../shared/Title.astro";
 ---
 
@@ -7,13 +8,11 @@ import Title from "../shared/Title.astro";
     <section class="">
         <div class="py-8 lg:py-16  mx-auto max-w-screen-md">
             <div class="text-center">
-                <Title>Contact Us</Title>
+                <Title transition:name="contact">Contact Us</Title>
             </div>
-            <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Message us to discuss your project, ask questions, or request a quote. <br> Here to help bring your vision to life. <br>
-                <br>
-                Free Consultations!
-                Don't hesitate to message us :)
-            </p>
+            <Paragraph className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+                Message us to discuss your project, ask questions, or request a quote. <br> Here to help bring your vision to life.            
+            </Paragraph>
             <form action="#" class="space-y-8 bg-gray-100  dark:bg-gray-900 p-8 lg:p-16 rounded-md px-auto flex flex-col">
                 <div>
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label>
@@ -29,6 +28,11 @@ import Title from "../shared/Title.astro";
                 </div>
                 <button type="submit" class=" py-3 px-5 text-sm font-medium text-center text-white bg-primary rounded-full bg-primary-700 sm:w-fit hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary dark:hover:bg-primary-100 dark:focus:ring-primary-800">Send message</button>
             </form>
+            <Paragraph className="text-center py-12">
+                Free Consultations!
+                <br>
+                Don't hesitate to message us :)
+            </Paragraph>
         </div>
       </section>
       

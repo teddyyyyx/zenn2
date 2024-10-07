@@ -1,4 +1,5 @@
 ---
+import { ViewTransitions } from "astro:transitions";
 import Footer from "../components/elements/Footer.astro";
 import Navbar from "../components/elements/Navbar.astro";
 
@@ -7,6 +8,26 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+    // const slideAnim = {
+    //   old: {
+    //     name: 'slideDown',
+    //     duration: '0.3s',
+    //     easing: 'ease-out',
+    //     fillMode: 'backwards',
+    //   },
+    //   new: {
+    //     name: 'slideUp',
+    //     duration: '0.3s',
+    //     delay: `${index * 0.1 + 0.1}s`,
+    //     easing: 'ease-out',
+    //     fillMode: 'backwards',
+    //   },
+    // }
+    // const verticalSlide = {
+    //   forwards: animSlideUp,
+    //   backwards: animSlideUp,
+    // }
 ---
 
 <!DOCTYPE html>
@@ -16,30 +37,16 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="description" content="AgenceX - SEO Agency website landing page made with ASTROJS and TAILWINDCSS">
-    <title>Zenn Web Designs</title>
+    <meta name="description" content="Web Development in Sorsogon City">
+    <title>{title}</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <script src="/node_modules/flowbite/dist/flowbite.min.js" defer></script>
-    <!-- <script is:inline> //Removes Flickering on Page Navigation when in Dark Mode
-            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark')
-      } else {
-        document.documentElement.classList.remove('dark')
-      }
-      // Whenever the user explicitly chooses light mode
-      localStorage.theme = 'light'
-      // Whenever the user explicitly chooses dark mode
-      localStorage.theme = 'dark'
-      // Whenever the user explicitly chooses to respect the OS preference
-      localStorage.removeItem('theme')
-
-    </script> -->
+    <ViewTransitions />
   </head>
-  <body class="overflow-hidden overflow-y-auto bg-body ">
+  <body class="overflow-hidden overflow-y-auto bg-body">
    <div class="overflow-x-clip	">
       <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0 pointer-events-none	">
         <!-- <span class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden"></span> -->
@@ -52,7 +59,100 @@ const { title } = Astro.props;
     <Footer />
   </div>
   </body>
+
   <script>
+    function applyTheme() {
+      const switchTheme = document.querySelector("[data-switch-theme]");
+      if (
+        localStorage.getItem("appTheme") === "dark" ||
+        (!("appTheme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+  
+      if (switchTheme) {
+        switchTheme.addEventListener("click", (e) => {
+          e.preventDefault();
+          const doc = document.documentElement;
+          if (doc) {
+            if (localStorage.getItem("appTheme")) {
+              if (localStorage.getItem("appTheme") === "light") {
+                doc.classList.add("dark");
+                localStorage.setItem("appTheme", "dark");
+              } else {
+                doc.classList.remove("dark");
+                localStorage.setItem("appTheme", "light");
+              }
+            } else {
+              if (doc.classList.contains("dark")) {
+                doc.classList.remove("dark");
+                localStorage.setItem("appTheme", "light");
+              } else {
+                doc.classList.add("dark");
+                localStorage.setItem("appTheme", "dark");
+              }
+            }
+          }
+        });
+      }
+    }
+  
+    function applyMenuToggle() {
+      const toggleMenu = document.querySelector("[data-toggle-nav]");
+      const navbar = document.querySelector("[data-navbar]");
+      const overlayNav = document.querySelector("[data-nav-overlay]");
+  
+      if (toggleMenu && navbar && overlayNav) {
+        toggleMenu.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (toggleMenu.getAttribute("data-open-nav") === "false") {
+            toggleMenu.setAttribute("data-open-nav", "true");
+            overlayNav.setAttribute("data-is-visible", "true");
+            document.body.classList.add("!overflow-y-hidden");
+            navbar.style.height = `${navbar.scrollHeight}px`;
+          } else {
+            toggleMenu.setAttribute("data-open-nav", "false");
+            overlayNav.setAttribute("data-is-visible", "false");
+            document.body.classList.remove("!overflow-y-hidden");
+            navbar.style.height = "0px";
+          }
+        });
+  
+        navbar.addEventListener("click", () => {
+          toggleMenu.setAttribute("data-open-nav", "false");
+          overlayNav.setAttribute("data-is-visible", "false");
+          document.body.classList.remove("!overflow-y-hidden");
+          navbar.style.height = "0px";
+        });
+  
+        overlayNav.addEventListener("click", () => {
+          toggleMenu.setAttribute("data-open-nav", "false");
+          overlayNav.setAttribute("data-is-visible", "false");
+          document.body.classList.remove("!overflow-y-hidden");
+          navbar.style.height = "0px";
+        });
+      }
+    }
+
+    
+  
+    // Apply theme and menu toggle on initial load
+    applyTheme();
+    applyMenuToggle();
+  
+    // Reapply theme and menu toggle after every page swap
+    document.addEventListener('astro:after-swap', () => {
+      applyTheme();
+      applyMenuToggle();
+    });
+  </script>
+
+
+
+  <!-- <script>
     const switchTheme = document.querySelector(
       "[data-switch-theme]"
     ) as HTMLButtonElement;
@@ -135,7 +235,7 @@ const { title } = Astro.props;
 		  	navbar.style.height = "0px"
       });
     }
-  </script>
+  </script> -->
 </html>
 <style is:global>
   :root {
@@ -184,4 +284,25 @@ const { title } = Astro.props;
     visibility: visible;
     display: flex;
   }
+
+  @keyframes slideUp {
+  from {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20%);
+  }
+}
 </style>

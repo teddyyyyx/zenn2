@@ -3,11 +3,15 @@ import ContactComponent from "../components/sections/ContactComponent.astro";
 import CTA from "../components/sections/CTA.astro";
 import Container from "../components/shared/Container.astro";
 import Layout from "../layouts/Layout.astro";
+
 ---
 
 <Layout title="Contact - Zenn Web Designs">
-        <div class="pt-20  md:pt-32 xl:pt-40 flex flex-col">
-            <ContactComponent/>
-            <CTA />
-        </div>
+  <main class="pt-20 md:pt-32 xl:pt-0 flex flex-col">
+      <div class="xl:pt-36 flex flex-col">
+      
+        <ContactComponent/>
+        <CTA />
+      </div>
+  </main>
 </Layout>
