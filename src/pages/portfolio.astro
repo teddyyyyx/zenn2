@@ -1,0 +1,76 @@
+---
+import { Image } from "astro:assets";
+import Container from "../components/shared/Container.astro";
+import Title from "../components/shared/Title.astro";
+import Layout from "../layouts/Layout.astro";
+import hostjuls_img from '../images/hostjuls_prj.png'
+import theproudmom_img from '../images/theproudmom_prj.png'
+import pandoras_img from '../images/pandoras_prj.png'
+import Paragraph from "../components/shared/Paragraph.astro";
+import Button from "../components/shared/Button.astro";
+---
+
+<!-- https://componentland.com/component/features-3-row-grid-1 -->
+
+<Layout title="Portfolio - Zenn Web Designs">
+    <main class="pt-28 md:pt-32 xl:pt-36 flex flex-col gap-20">
+            <Container>
+                <div class="mx-auto max-w-screen-md text-center mb-8 lg:mb-14 xl:mb:20" >
+                    <Title>Portfolio</Title>
+                    <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">Our websites are fully custom-coded to match your brand, ensuring fast load times and top performance. Choose the plan that best fits your needs</p>
+                </div>
+                
+                <div class="flex flex-col ">
+                    <div class=" gap-16 items-center py-8 px-4  rounded-xl mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-0"      >
+                        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                            <h2 class="mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Host Juls</h2>
+                            <Paragraph>
+                                Made a website from start up to deployment using ReactJS and SCSS for the highly cherished event host in Bicol. Dark and minimal as requested by Host Juls. With fully functional contact form that will notify Host Juls for future client queries
+                            </Paragraph>
+                            <a href="https://www.hostjuls.com/" class="hidden lg:block mt-5">
+                                <Button variant={"primary"} className={"min-w-max text-white mt-4 "}>Visit Website</Button>
+                            </a>
+                        </div>
+
+
+                        <Image src={hostjuls_img} alt="Portfolio Project image" class="w-full mt-10 lg:max-w-2xl  "/>
+                        <a href="https://www.hostjuls.com/" class="lg:hidden">
+                            <Button variant={"primary"} className={"min-w-max text-white mt-4 "}>Visit Website</Button>
+                        </a>
+                    </div>
+
+            
+                    <div class="gap-16 items-center py-8 px-4  rounded-xl mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-0"      >
+                        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                            <h2 class="mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">The Proud Mom Photography</h2>
+                            <Paragraph>
+                                Made a website from start up to deployment using ReactJS and SCSS for the highly cherished event host in Bicol. Dark and minimal as requested by Host Juls. With fully functional contact form that will notify Host Juls for future client queries
+                            </Paragraph>
+                        </div>
+    
+                        <Image src={theproudmom_img} alt="Portfolio Project image" class="w-full mt-10 lg:max-w-2xl  "/>
+
+                        <a href="https://www.theproudmomphotography.com/">
+                            <Button variant={"primary"} className={"min-w-max text-white mt-4"}>Visit Website</Button>
+                        </a>
+                    </div>
+                    
+
+                    <div class="gap-x-16 gap-y-0 items-center py-8 px-4  rounded-xl mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-0"      >
+                        <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+                            <h2 class="mb-4 text-2xl md:text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Pandoras Restaurant</h2>
+                            <Paragraph>
+                                Made a website from start up to deployment using ReactJS and SCSS for the highly cherished event host in Bicol. Dark and minimal as requested by Host Juls. With fully functional contact form that will notify Host Juls for future client queries
+                            </Paragraph>
+                        </div>
+    
+                        <Image src={pandoras_img} alt="Portfolio Project image" class="w-full mt-10 lg:max-w-2xl    "/>
+
+                        <a href="#">
+                            <Button variant={"primary"} className={"min-w-max text-white mt-4 lg:mt-10"}>Visit Website</Button>
+                        </a>
+                    </div>
+                </div>
+            </Container>
+    </main>
+</Layout>

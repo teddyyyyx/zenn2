@@ -2,13 +2,15 @@
 import blogs from '../blog/blogOverview.json'
 import Paragraph from '../shared/Paragraph.astro'
 import Title from '../shared/Title.astro'
+import benz_img from '../../images/benz.png'
+import { Image } from 'astro:assets'
 ---
 <section>
 <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
 <div class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
-    <Title>Explore Blog</Title>
+    <Title>Blog</Title>
     <Paragraph >
-    We use an agile approach to test assumptions and connect with the needs of your audience early and often.
+        Explore our blog for valuable insights on websites and their essential role in driving business success
     </Paragraph>
 </div>
 
@@ -30,7 +32,7 @@ import Title from '../shared/Title.astro'
         <p class="mb-5 font-light text-gray-500 dark:text-gray-400">{blog.description}</p>
         <div class="flex justify-between items-center">
         <div class="flex items-center space-x-4">
-            <img class="w-7 h-7 rounded-full" src={blog.avatar} alt={blog.author + ' avatar'} />
+            <Image class="w-7 h-7 rounded-full" src={benz_img} alt="Blog Author" />
             <span class="font-medium dark:text-white">{blog.author}</span>
         </div>
         <a href="#" class="inline-flex items-center font-medium text-primary-600 dark:text-primary hover:underline">
